@@ -2,10 +2,12 @@ import qbs
 
 CppApplication {
     Depends { name: "Qt.quick" }
+    Depends { name: "Ariel" }
 
     // Additional import path used to resolve QML modules in Qt Creator's code model
     property pathList qmlImportPaths: []
 
+    name: "Blog"
     cpp.cxxLanguageVersion: "c++11"
 
     cpp.defines: [
@@ -25,6 +27,8 @@ CppApplication {
         "main.cpp",
         "main.qml",
         "qml.qrc",
+        "storage.cpp",
+        "storage.h",
     ]
 
     Group {     // Properties for the produced executable
