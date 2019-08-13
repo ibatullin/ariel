@@ -5,7 +5,7 @@ Project {
     minimumQbsVersion: "1.12.0"
 
     references: [
-        "src/libs/ariel/ariel.qbs",
+        "src/ariel.qbs",
         "tests/tests.qbs"
     ]
 
