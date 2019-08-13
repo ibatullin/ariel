@@ -6,7 +6,8 @@ Project {
 
     references: [
         "src/ariel.qbs",
-        "tests/tests.qbs"
+        "tests/tests.qbs",
+        "examples/examples.qbs"
     ]
 
     AutotestRunner { }
