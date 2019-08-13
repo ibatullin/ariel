@@ -1,8 +1,12 @@
 import qbs
 
 CppApplication {
-    name: "Ariel Test"
     Depends { name: "Ariel" }
+    Depends { name: "Qt.core" }
+    Depends { name: "Qt.testlib" }
+
+    name: "Ariel Test"
+    type: ["application", "autotest"]
     files: [
         "tst_ariel.cpp",
     ]

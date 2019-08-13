@@ -6,6 +6,7 @@ StaticLibrary {
     Depends { name: "Qt.core" }
     Depends { name: "Qt.sql" }
     cpp.includePaths: [ product.sourceDirectory ]
+    cpp.cxxLanguageVersion: "c++14"
 
     Export {
         Depends { name: "cpp" }
