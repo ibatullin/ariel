@@ -4,6 +4,7 @@
 #include "selectmanager.h"
 #include "insertmanager.h"
 #include "updatemanager.h"
+#include "deletemanager.h"
 #include "attribute.h"
 #include "nodes/comparisonoperators.h"
 
@@ -47,6 +48,9 @@ public:
     InsertManager insert(const Attribute &attribute, const BindValue &value) const;
     UpdateManager update(const Attribute &attribute, const QVariant &value) const;
     UpdateManager update(const Attribute &attribute, const BindValue &value) const;
+    DeleteManager deleteWhere(const ComparisonOperator &op) const;
+    DeleteManager deleteWhere(const LogicalOperator &op) const;
+    DeleteManager deleteWhere(Not::Pointer op) const;
 
     TableNode::Pointer toNode() const;
     Attribute operator[](const QString &name) const;
@@ -56,6 +60,7 @@ public:
 private:
     InsertManager insertManager() const;
     UpdateManager updateManager() const;
+    DeleteManager deleteManager() const;
 
     TableData::Pointer d;
 };

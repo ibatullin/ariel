@@ -14,6 +14,7 @@ class DeleteManager : public TreeManager<DeleteStatement>
 public:
     DeleteManager() = default;
     explicit DeleteManager(const Table &table);
+    explicit DeleteManager(TableData::Pointer table);
     DeleteManager &from(const Table &table);
     DeleteManager &from(TableNode::Pointer table);
     DeleteManager &where(const ComparisonOperator &op);

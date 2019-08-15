@@ -7,6 +7,13 @@
 namespace Ariel {
 
 DeleteManager::DeleteManager(const Table &table)
+    : TreeManager<DeleteStatement>(DeleteStatement::create())
+{
+    from(table);
+}
+
+DeleteManager::DeleteManager(TableData::Pointer table)
+    : TreeManager<DeleteStatement>(DeleteStatement::create())
 {
     from(table);
 }

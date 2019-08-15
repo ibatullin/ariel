@@ -135,6 +135,21 @@ UpdateManager Table::update(const Attribute &attribute, const BindValue &value) 
     return updateManager().update(attribute, value);
 }
 
+DeleteManager Table::deleteWhere(const ComparisonOperator &op) const
+{
+    return deleteManager().where(op);
+}
+
+DeleteManager Table::deleteWhere(const LogicalOperator &op) const
+{
+    return deleteManager().where(op);
+}
+
+DeleteManager Table::deleteWhere(Not::Pointer op) const
+{
+    return deleteManager().where(op);
+}
+
 TableNode::Pointer Table::toNode() const
 {
     return TableNode::create(d);
@@ -163,6 +178,11 @@ InsertManager Table::insertManager() const
 UpdateManager Table::updateManager() const
 {
     return UpdateManager(d);
+}
+
+DeleteManager Table::deleteManager() const
+{
+    return DeleteManager(d);
 }
 
 } // namespace Ariel
