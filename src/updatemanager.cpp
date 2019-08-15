@@ -56,13 +56,13 @@ UpdateManager &UpdateManager::order(AbstractOrder::Pointer order)
     return *this;
 }
 
-UpdateManager &UpdateManager::set(const Attribute &attribute, const QVariant &value)
+UpdateManager &UpdateManager::update(const Attribute &attribute, const QVariant &value)
 {
     ast()->addValue(attribute.toUnqualifiedColumn(), value);
     return *this;
 }
 
-UpdateManager &UpdateManager::set(const Attribute &attribute, const BindValue &value)
+UpdateManager &UpdateManager::update(const Attribute &attribute, const BindValue &value)
 {
     ast()->addValue(attribute.toUnqualifiedColumn(), value.toNode());
     return *this;

@@ -127,12 +127,12 @@ InsertManager Table::insert(const Attribute &attribute, const BindValue &value) 
 
 UpdateManager Table::update(const Attribute &attribute, const QVariant &value) const
 {
-    return updateManager().set(attribute, value);
+    return updateManager().update(attribute, value);
 }
 
 UpdateManager Table::update(const Attribute &attribute, const BindValue &value) const
 {
-    return updateManager().set(attribute, value);
+    return updateManager().update(attribute, value);
 }
 
 TableNode::Pointer Table::toNode() const

@@ -24,8 +24,8 @@ public:
     UpdateManager &where(const LogicalOperator &op);
     UpdateManager &where(Not::Pointer op);
     UpdateManager &order(AbstractOrder::Pointer order);
-    UpdateManager &set(const Attribute &attribute, const QVariant &value);
-    UpdateManager &set(const Attribute &attribute, const BindValue &value);
+    UpdateManager &update(const Attribute &attribute, const QVariant &value);
+    UpdateManager &update(const Attribute &attribute, const BindValue &value);
     UpdateManager &take(int i);
 };
 
