@@ -33,6 +33,12 @@ class Engine
 public:
     static Engine &instance();
 
+    Engine(const Engine &) = delete;
+    Engine(Engine &&) = delete;
+
+    Engine &operator =(const Engine &) = delete;
+    Engine &operator =(Engine &&) = delete;
+
     void setDefaultDriverName(const QString &type);
     QString defaultDriverName() const;
     void addVisitor(const QString &driverName, AbstractVisitorCreator *creator);
