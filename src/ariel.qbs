@@ -1,4 +1,5 @@
 import qbs
+import qbs.FileInfo
 
 StaticLibrary {
     name: "Ariel"
@@ -12,7 +13,7 @@ StaticLibrary {
         Depends { name: "cpp" }
         Depends { name: "Qt.core" }
         Depends { name: "Qt.sql" }
-        cpp.includePaths: product.cpp.includePaths
+        cpp.includePaths: FileInfo.joinPaths(product.sourceDirectory, "../include")
     }
 
     files: [

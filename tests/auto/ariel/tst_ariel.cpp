@@ -1,12 +1,10 @@
 #include <QtTest>
 
-#include "table.h"
-#include "selectmanager.h"
-#include "insertmanager.h"
-#include "updatemanager.h"
-#include "deletemanager.h"
-#include "bindvalue.h"
-#include "collectors/sqlcollector.h"
+#include <Ariel/Table>
+#include <Ariel/SelectManager>
+#include <Ariel/DeleteManager>
+#include <Ariel/InsertManager>
+#include <Ariel/UpdateManager>
 
 #include <QDateTime>
 #include <QSqlDatabase>
