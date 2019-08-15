@@ -178,7 +178,6 @@ void SqlVisitor::visit(const Limit &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const LiteralValue &node, AbstractCollector &collector)
 {
-//    collector.collect(formatValue(node.value()));
     collector.formatValue(node.value());
 }
 

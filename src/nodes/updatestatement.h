@@ -19,7 +19,7 @@ public:
     UpdateStatement &operator =(UpdateStatement other);
     void setRelation(TableNode::Pointer relation);
     TableNode::Pointer relation() const;
-    void setWheres(const QList<NodePointer> wheres);
+    void setWheres(const QList<NodePointer> &wheres);
     void addWhere(NodePointer where);
     QList<NodePointer> wheres() const;
     void setOrders(const QList<AbstractOrder::Pointer> &orders);

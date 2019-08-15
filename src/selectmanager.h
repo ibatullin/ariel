@@ -31,7 +31,7 @@ public:
     SelectManager &from(const Table &table);
     SelectManager &from(TableData::Pointer table);
     SelectManager &select(const Attribute &projection);
-    SelectManager &select(const QList<Attribute> projections);
+    SelectManager &select(const QList<Attribute> &projections);
     SelectManager &select(std::initializer_list<Attribute> projections);
     SelectManager &select(const QString &projection);
     SelectManager &select(const QStringList &projections);

@@ -27,7 +27,7 @@ public:
 
     SelectManager from() const;
     SelectManager select(const Attribute &projection) const;
-    SelectManager select(const QList<Attribute> projections) const;
+    SelectManager select(const QList<Attribute> &projections) const;
     SelectManager select(std::initializer_list<Attribute> projections) const;
     SelectManager select(const QString &projection) const;
     SelectManager select(const QStringList &projections) const;

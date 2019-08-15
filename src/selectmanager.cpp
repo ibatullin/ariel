@@ -81,7 +81,7 @@ SelectManager &SelectManager::select(const Attribute &projection)
     return *this;
 }
 
-SelectManager &SelectManager::select(const QList<Attribute> projections)
+SelectManager &SelectManager::select(const QList<Attribute> &projections)
 {
     for (const auto &attribute : projections)
         context()->addProjection(attribute.toNode());

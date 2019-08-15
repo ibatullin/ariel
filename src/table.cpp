@@ -40,7 +40,7 @@ SelectManager Table::select(const Attribute &projection) const
     return from().select(projection);
 }
 
-SelectManager Table::select(const QList<Attribute> projections) const
+SelectManager Table::select(const QList<Attribute> &projections) const
 {
     return from().select(projections);
 }

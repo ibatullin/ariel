@@ -31,7 +31,7 @@ TableNode::Pointer UpdateStatement::relation() const
     return m_relation;
 }
 
-void UpdateStatement::setWheres(const QList<NodePointer> wheres)
+void UpdateStatement::setWheres(const QList<NodePointer> &wheres)
 {
     m_wheres = wheres;
 }

@@ -8,7 +8,8 @@ ComparisonOperator::ComparisonOperator(AbstractComparisonOperatorNode::Pointer n
 {
 }
 
-ComparisonOperator::ComparisonOperator(AbstractComparisonOperatorNode::Pointer node, QSharedPointer<BaseOperatorHolder> holder)
+ComparisonOperator::ComparisonOperator(AbstractComparisonOperatorNode::Pointer node,
+                                       QSharedPointer<BaseOperatorHolder> holder)
     : m_node(node),
       m_holder(holder)
 {
@@ -127,7 +128,8 @@ OperatorHolder<IsNot, Is>::createOppositeOperator(NodePointer left, NodePointer 
 }
 
 
-SpecialComparisonOperator::SpecialComparisonOperator(AbstractComparisonOperatorNode::Pointer node, QSharedPointer<BaseOperatorHolder> holder)
+SpecialComparisonOperator::SpecialComparisonOperator(AbstractComparisonOperatorNode::Pointer node,
+                                                     QSharedPointer<BaseOperatorHolder> holder)
     : ComparisonOperator(node, holder)
 {
 }
