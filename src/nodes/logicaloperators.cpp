@@ -16,7 +16,7 @@ AbstractLogicalOperatorNode::AbstractLogicalOperatorNode(NodePointer left, NodeP
 
 AbstractLogicalOperatorNode &AbstractLogicalOperatorNode::operator =(AbstractLogicalOperatorNode other)
 {
-    qSwap(m_operands, other.m_operands);
+    std::swap(m_operands, other.m_operands);
     return *this;
 }
 

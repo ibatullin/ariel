@@ -17,10 +17,10 @@ SelectCore::SelectCore(const SelectCore &other)
 
 SelectCore &SelectCore::operator =(SelectCore other)
 {
-    qSwap(m_source, other.m_source);
-    qSwap(m_projections, other.m_projections);
-    qSwap(m_wheres, other.m_wheres);
-    qSwap(m_groups, other.m_groups);
+    std::swap(m_source, other.m_source);
+    std::swap(m_projections, other.m_projections);
+    std::swap(m_wheres, other.m_wheres);
+    std::swap(m_groups, other.m_groups);
     return *this;
 }
 

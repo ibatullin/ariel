@@ -21,7 +21,7 @@ BindValueNode::BindValueNode(const BindValueNode &other)
 
 BindValueNode &BindValueNode::operator =(BindValueNode other)
 {
-    qSwap(d, other.d);
+    std::swap(d, other.d);
     d.detach();
     return *this;
 }

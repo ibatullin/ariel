@@ -11,9 +11,9 @@ DeleteStatement::DeleteStatement(const DeleteStatement &other)
 
 DeleteStatement &DeleteStatement::operator =(DeleteStatement other)
 {
-    qSwap(m_relation, other.m_relation);
-    qSwap(m_wheres, other.m_wheres);
-    qSwap(m_limit, other.m_limit);
+    std::swap(m_relation, other.m_relation);
+    std::swap(m_wheres, other.m_wheres);
+    std::swap(m_limit, other.m_limit);
     return *this;
 }
 

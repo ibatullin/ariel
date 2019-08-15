@@ -20,7 +20,7 @@ TableNode::TableNode(const TableNode &other)
 
 TableNode &TableNode::operator =(TableNode other)
 {
-    qSwap(d, other.d);
+    std::swap(d, other.d);
     d.detach();
     return *this;
 }

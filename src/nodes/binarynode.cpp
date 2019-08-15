@@ -16,8 +16,8 @@ AbstractBinaryNode::AbstractBinaryNode(const AbstractBinaryNode &other)
 
 AbstractBinaryNode &AbstractBinaryNode::operator =(AbstractBinaryNode other)
 {
-    qSwap(m_left, other.m_left);
-    qSwap(m_right, other.m_right);
+    std::swap(m_left, other.m_left);
+    std::swap(m_right, other.m_right);
     return *this;
 }
 

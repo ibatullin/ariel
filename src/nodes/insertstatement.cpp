@@ -12,10 +12,10 @@ InsertStatement::InsertStatement(const InsertStatement &other)
 
 InsertStatement &InsertStatement::operator =(InsertStatement other)
 {
-    qSwap(m_relation, other.m_relation);
-    qSwap(m_columns, other.m_columns);
-    qSwap(m_values, other.m_values);
-    qSwap(m_select, other.m_select);
+    std::swap(m_relation, other.m_relation);
+    std::swap(m_columns, other.m_columns);
+    std::swap(m_values, other.m_values);
+    std::swap(m_select, other.m_select);
     return *this;
 }
 

@@ -14,7 +14,7 @@ AbstractUnaryNode::AbstractUnaryNode(const AbstractUnaryNode &other)
 
 AbstractUnaryNode &AbstractUnaryNode::operator =(AbstractUnaryNode other)
 {
-    qSwap(m_expression, other.m_expression);
+    std::swap(m_expression, other.m_expression);
     return *this;
 }
 

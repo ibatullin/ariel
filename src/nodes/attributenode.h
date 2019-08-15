@@ -48,7 +48,7 @@ public:
 
     AttributeNode &operator =(BaseAttributeNode<T> other)
     {
-        qSwap(d, other.d);
+        std::swap(d, other.d);
         return *this;
     }
 

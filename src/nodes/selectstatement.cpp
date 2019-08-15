@@ -26,12 +26,12 @@ SelectStatement::SelectStatement(const SelectStatement &other)
 
 SelectStatement &SelectStatement::operator =(SelectStatement other)
 {
-    qSwap(m_orders, other.m_orders);
-    qSwap(m_limit, other.m_limit);
-    qSwap(m_offset, other.m_offset);
-    qSwap(m_root, other.m_root);
-    qSwap(m_operator, other.m_operator);
-    qSwap(m_context, other.m_context);
+    std::swap(m_orders, other.m_orders);
+    std::swap(m_limit, other.m_limit);
+    std::swap(m_offset, other.m_offset);
+    std::swap(m_root, other.m_root);
+    std::swap(m_operator, other.m_operator);
+    std::swap(m_context, other.m_context);
     return *this;
 }
 

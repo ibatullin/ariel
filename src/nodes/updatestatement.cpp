@@ -13,11 +13,11 @@ UpdateStatement::UpdateStatement(const UpdateStatement &other)
 
 UpdateStatement &UpdateStatement::operator =(UpdateStatement other)
 {
-    qSwap(m_relation, other.m_relation);
-    qSwap(m_wheres, other.m_wheres);
-    qSwap(m_limit, other.m_limit);
-    qSwap(m_orders, other.m_orders);
-    qSwap(m_values, other.m_values);
+    std::swap(m_relation, other.m_relation);
+    std::swap(m_wheres, other.m_wheres);
+    std::swap(m_limit, other.m_limit);
+    std::swap(m_orders, other.m_orders);
+    std::swap(m_values, other.m_values);
     return *this;
 }
 
