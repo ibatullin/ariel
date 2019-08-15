@@ -13,7 +13,7 @@ class SelectManager;
 class InsertManager : public TreeManager<InsertStatement>
 {
 public:
-    InsertManager();
+    InsertManager() = default;
     explicit InsertManager(TableData::Pointer table);
     explicit InsertManager(const Table &table);
 
