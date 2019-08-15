@@ -34,42 +34,42 @@ QString Engine::defaultDriverName() const
     return m_defaultType;
 }
 
-void Engine::addVisitor(const QString &driverName, AbstractVisitorCreator *creator)
+void Engine::addVisitor(const QString &driverName, AbstractVisitorFactory *factory)
 {
-    if (m_creators.contains(driverName))
-        delete m_creators.take(driverName);
+    if (m_factories.contains(driverName))
+        delete m_factories.take(driverName);
 
-    m_creators.insert(driverName, creator);
+    m_factories.insert(driverName, factory);
 }
 
 std::unique_ptr<AbstractVisitor> Engine::visitor()
 {
-    auto creator = Engine::instance().defaultVisitorCreator();
-    return creator->createVisitor();
+    auto factory = Engine::instance().defaultVisitorFactory();
+    return factory->createVisitor();
 }
 
 std::unique_ptr<AbstractVisitor> Engine::visitor(const QString &driverName)
 {
-    const auto creator = Engine::instance().visitorCreator(driverName);
-    return creator->createVisitor();
+    const auto factory = Engine::instance().visitorFactory(driverName);
+    return factory->createVisitor();
 }
 
-void Engine::setDefaultVisitorCreator(std::unique_ptr<AbstractVisitorCreator> creator)
+void Engine::setDefaultVisitorFactory(std::unique_ptr<AbstractVisitorFactory> factory)
 {
-    m_defaultCreator = std::move(creator);
+    m_defaultFactory = std::move(factory);
 }
 
-AbstractVisitorCreator *Engine::defaultVisitorCreator() const
+AbstractVisitorFactory *Engine::defaultVisitorFactory() const
 {
-    return m_defaultCreator.get();
+    return m_defaultFactory.get();
 }
 
-AbstractVisitorCreator *Engine::visitorCreator(const QString &driverName) const
+AbstractVisitorFactory *Engine::visitorFactory(const QString &driverName) const
 {
-    if (const auto creator = m_creators.value(driverName))
-        return creator;
+    if (const auto factory = m_factories.value(driverName))
+        return factory;
     else
-        return defaultVisitorCreator();
+        return defaultVisitorFactory();
 }
 
 Engine::Engine()
@@ -79,13 +79,13 @@ Engine::Engine()
 
 Engine::~Engine()
 {
-    qDeleteAll(m_creators);
+    qDeleteAll(m_factories);
 }
 
 void Engine::createVisitors()
 {
-    setDefaultVisitorCreator(std::make_unique<VisitorCreator<SqlVisitor>>());
-    addVisitor(DriverName::Sqlite, new VisitorCreator<SqliteVisitor>());
+    setDefaultVisitorFactory(std::make_unique<VisitorFactory<SqlVisitor>>());
+    addVisitor(DriverName::Sqlite, new VisitorFactory<SqliteVisitor>());
 }
 
 } // namespace Ariel

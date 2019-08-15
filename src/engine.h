@@ -8,17 +8,17 @@
 
 namespace Ariel {
 
-class AbstractVisitorCreator
+class AbstractVisitorFactory
 {
 public:
-    virtual ~AbstractVisitorCreator() = default;
+    virtual ~AbstractVisitorFactory() = default;
     virtual std::unique_ptr<AbstractVisitor> createVisitor() const = 0;
 };
 
 
 template<typename T,
          typename = typename std::enable_if<std::is_base_of<AbstractVisitor, T>::value>::type>
-class VisitorCreator : public AbstractVisitorCreator
+class VisitorFactory : public AbstractVisitorFactory
 {
 public:
     std::unique_ptr<AbstractVisitor> createVisitor() const override
@@ -41,15 +41,15 @@ public:
 
     void setDefaultDriverName(const QString &type);
     QString defaultDriverName() const;
-    void addVisitor(const QString &driverName, AbstractVisitorCreator *creator);
+    void addVisitor(const QString &driverName, AbstractVisitorFactory *factory);
 
     static std::unique_ptr<AbstractVisitor> visitor();
     static std::unique_ptr<AbstractVisitor> visitor(const QString &driverName);
 
 protected:
-    void setDefaultVisitorCreator(std::unique_ptr<AbstractVisitorCreator> creator);
-    AbstractVisitorCreator *defaultVisitorCreator() const;
-    AbstractVisitorCreator *visitorCreator(const QString &driverName) const;
+    void setDefaultVisitorFactory(std::unique_ptr<AbstractVisitorFactory> factory);
+    AbstractVisitorFactory *defaultVisitorFactory() const;
+    AbstractVisitorFactory *visitorFactory(const QString &driverName) const;
 
 private:
     Engine();
@@ -57,8 +57,8 @@ private:
     void createVisitors();
 
     QString m_defaultType;
-    std::unique_ptr<AbstractVisitorCreator> m_defaultCreator;
-    QHash<QString, AbstractVisitorCreator *> m_creators;
+    std::unique_ptr<AbstractVisitorFactory> m_defaultFactory;
+    QHash<QString, AbstractVisitorFactory *> m_factories;
 };
 
 } // namespace Ariel
