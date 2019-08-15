@@ -5,10 +5,6 @@
 
 namespace Ariel {
 
-InsertManager::InsertManager()
-{
-}
-
 InsertManager::InsertManager(TableData::Pointer table)
     : TreeManager(InsertStatement::create())
 {
