@@ -153,7 +153,7 @@ protected:
 
     template<typename T>
     void collect(const QList<QExplicitlySharedDataPointer<T>> &nodes, AbstractCollector &collector,
-                 const QString &spacer = QString(' '), const QString &connector = QString(", "))
+                 const QString &spacer = QString(' '), const QString &connector = QStringLiteral(", "))
     {
         if (nodes.isEmpty())
             return;
@@ -171,7 +171,7 @@ protected:
 
     template<typename T>
     void collect(const QList<T> &nodes, AbstractCollector &collector,
-                 const QString &connector = QString(", "))
+                 const QString &connector = QStringLiteral(", "))
     {
         if (nodes.isEmpty())
             return;

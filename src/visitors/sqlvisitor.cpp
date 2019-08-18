@@ -17,18 +17,18 @@ namespace Ariel {
 
 void SqlVisitor::visit(const And &node, AbstractCollector &collector)
 {
-    collect(node.operands(), collector, "", Delimeters::And);
+    collect(node.operands(), collector, QString(), Delimeters::And);
 }
 
 void SqlVisitor::visit(const Ascending &node, AbstractCollector &collector)
 {
     visitNode(node.expression(), collector);
-    collector << " ASC";
+    collector << QStringLiteral(" ASC");
 }
 
 void SqlVisitor::visit(const Assignment &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " = ");
+    visitBinaryNode(node, collector, QStringLiteral(" = "));
 }
 
 void SqlVisitor::visit(const AttributeNode &node, AbstractCollector &collector)
@@ -44,7 +44,7 @@ void SqlVisitor::visit(const AttributeNode &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const Between &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " BETWEEN ");
+    visitBinaryNode(node, collector, QStringLiteral(" BETWEEN "));
 }
 
 void SqlVisitor::visit(const BindValueNode &node, AbstractCollector &collector)
@@ -66,17 +66,17 @@ void SqlVisitor::visit(const DeleteStatement &node, AbstractCollector &collector
 void SqlVisitor::visit(const Descending &node, AbstractCollector &collector)
 {
     visitNode(node.expression(), collector);
-    collector << " DESC";
+    collector << QStringLiteral(" DESC");
 }
 
 void SqlVisitor::visit(const Equal &node, AbstractCollector &collector)
 {
     visitNode(node.left(), collector);
     if (const auto right = node.right()) {
-        collector << " = ";
+        collector << QStringLiteral(" = ");
         visitNode(right, collector);
     } else {
-        collector << " IS NULL";
+        collector << QStringLiteral(" IS NULL");
     }
 }
 
@@ -87,17 +87,17 @@ void SqlVisitor::visit(const Except &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const False &, AbstractCollector &collector)
 {
-    collector << "FALSE";
+    collector << QStringLiteral("FALSE");
 }
 
 void SqlVisitor::visit(const GreaterThan &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " > ");
+    visitBinaryNode(node, collector, QStringLiteral(" > "));
 }
 
 void SqlVisitor::visit(const GreaterThanOrEqual &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " >= ");
+    visitBinaryNode(node, collector, QStringLiteral(" >= "));
 }
 
 void SqlVisitor::visit(const Group &node, AbstractCollector &collector)
@@ -107,26 +107,26 @@ void SqlVisitor::visit(const Group &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const Grouping &node, AbstractCollector &collector)
 {
-    visitUnaryNode(node, collector, "(", ")");
+    visitUnaryNode(node, collector, QStringLiteral("("), QStringLiteral(")"));
 }
 
 void SqlVisitor::visit(const In &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " IN (");
-    collector << ")";
+    visitBinaryNode(node, collector, QStringLiteral(" IN ("));
+    collector << QStringLiteral(")");
 }
 
 void SqlVisitor::visit(const InsertStatement &node, AbstractCollector &collector)
 {
     collector << Clause::InsertInto;
     visitNode(node.relation(), collector);
-    collector << " (";
-    collect(node.columns(), collector, "");
-    collector << ") ";
+    collector << QStringLiteral(" (");
+    collect(node.columns(), collector, QString());
+    collector << QStringLiteral(") ");
 
     if (!node.values().isEmpty()) {
-        collect(node.values(), collector, "VALUES (", Delimeters::Comma);
-        collector << ")";
+        collect(node.values(), collector, QStringLiteral("VALUES ("), Delimeters::Comma);
+        collector << QStringLiteral(")");
     } else {
         visitNode(node.select(), collector);
     }
@@ -139,12 +139,12 @@ void SqlVisitor::visit(const Intersect &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const Is &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " IS ");
+    visitBinaryNode(node, collector, QStringLiteral(" IS "));
 }
 
 void SqlVisitor::visit(const IsNot &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " IS NOT ");
+    visitBinaryNode(node, collector, QStringLiteral(" IS NOT "));
 }
 
 void SqlVisitor::visit(const JoinSource &node, AbstractCollector &collector)
@@ -162,17 +162,17 @@ void SqlVisitor::visit(const JoinSource &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const LessThan &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " < ");
+    visitBinaryNode(node, collector, QStringLiteral(" < "));
 }
 
 void SqlVisitor::visit(const LessThanOrEqual &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " <= ");
+    visitBinaryNode(node, collector, QStringLiteral(" <= "));
 }
 
 void SqlVisitor::visit(const Limit &node, AbstractCollector &collector)
 {
-    visitUnaryNode(node, collector, "LIMIT ");
+    visitUnaryNode(node, collector, QStringLiteral("LIMIT "));
 }
 
 void SqlVisitor::visit(const LiteralValue &node, AbstractCollector &collector)
@@ -182,48 +182,48 @@ void SqlVisitor::visit(const LiteralValue &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const Match &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " LIKE ");
+    visitBinaryNode(node, collector, QStringLiteral(" LIKE "));
 }
 
 void SqlVisitor::visit(const Not &node, AbstractCollector &collector)
 {
-    visitUnaryNode(node, collector, "NOT ");
+    visitUnaryNode(node, collector, QStringLiteral("NOT "));
 }
 
 void SqlVisitor::visit(const NotBetween &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " NOT BETWEEN ");
+    visitBinaryNode(node, collector, QStringLiteral(" NOT BETWEEN "));
 }
 
 void SqlVisitor::visit(const NotEqual &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " <> ");
+    visitBinaryNode(node, collector, QStringLiteral(" <> "));
 }
 
 void SqlVisitor::visit(const NotIn &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " NOT IN (");
-    collector << ")";
+    visitBinaryNode(node, collector, QStringLiteral(" NOT IN ("));
+    collector << QStringLiteral(")");
 }
 
 void SqlVisitor::visit(const NotMatch &node, AbstractCollector &collector)
 {
-    visitBinaryNode(node, collector, " NOT LIKE ");
+    visitBinaryNode(node, collector, QStringLiteral(" NOT LIKE "));
 }
 
 void SqlVisitor::visit(const Null &, AbstractCollector &collector)
 {
-    collector << "NULL";
+    collector << QStringLiteral("NULL");
 }
 
 void SqlVisitor::visit(const Offset &node, AbstractCollector &collector)
 {
-    visitUnaryNode(node, collector, "OFFSET ");
+    visitUnaryNode(node, collector, QStringLiteral("OFFSET "));
 }
 
 void SqlVisitor::visit(const Or &node, AbstractCollector &collector)
 {
-    collect(node.operands(), collector, "", Delimeters::Or);
+    collect(node.operands(), collector, QString(), Delimeters::Or);
 }
 
 void SqlVisitor::visit(const SelectCore &node, AbstractCollector &collector)
@@ -273,7 +273,7 @@ void SqlVisitor::visit(const TableNode &node, AbstractCollector &collector)
 
 void SqlVisitor::visit(const True &, AbstractCollector &collector)
 {
-    collector << "TRUE";
+    collector << QStringLiteral("TRUE");
 }
 
 void SqlVisitor::visit(const Union &node, AbstractCollector &collector)
@@ -300,7 +300,7 @@ void SqlVisitor::visit(const UpdateStatement &node, AbstractCollector &collector
 {
     collector << Clause::Update;
     visitNode(node.relation(), collector);
-    collector << " SET";
+    collector << QStringLiteral(" SET");
     collect(node.values(), collector);
     collect(node.wheres(), collector, Clause::Where);
     collect(node.orders(), collector, Clause::OrderBy);
@@ -312,7 +312,7 @@ void SqlVisitor::visit(const UpdateStatement &node, AbstractCollector &collector
 
 void SqlVisitor::visit(const Values &node, AbstractCollector &collector)
 {
-    visitUnaryNode(node, collector, "VALUES (", ")");
+    visitUnaryNode(node, collector, QStringLiteral("VALUES ("), QStringLiteral(")"));
 }
 
 void SqlVisitor::visit(const VariantList &node, AbstractCollector &collector)

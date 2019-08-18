@@ -10,12 +10,12 @@ class SqliteVisitor : public SqlVisitor
 private:
     void visit(const True &, AbstractCollector &collector) override
     {
-        collector << "1";
+        collector << QStringLiteral("1");
     }
 
     void visit(const False &, AbstractCollector &collector) override
     {
-        collector << "0";
+        collector << QStringLiteral("0");
     }
 };
 
