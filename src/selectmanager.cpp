@@ -12,7 +12,7 @@ SelectManager::SelectManager(const Table &table)
     from(table);
 }
 
-SelectManager::SelectManager(TableData::Pointer table)
+SelectManager::SelectManager(const TableData::Pointer &table)
 {
     from(table);
 }
@@ -22,7 +22,7 @@ SelectManager &SelectManager::from(const Table &table)
     return from(table.data());
 }
 
-SelectManager &SelectManager::from(TableData::Pointer table)
+SelectManager &SelectManager::from(const TableData::Pointer &table)
 {
     m_table = table;
     context()->source()->setLeft(TableNode::create(table));
@@ -34,7 +34,7 @@ void SelectManager::setProjection(const Attribute &projection)
     context()->setProjection(projection.toNode());
 }
 
-void SelectManager::setOrder(AbstractOrder::Pointer order)
+void SelectManager::setOrder(const AbstractOrder::Pointer &order)
 {
     ast()->setOrder(order);
 }
@@ -49,12 +49,12 @@ void SelectManager::setWhere(const LogicalOperator &op)
     context()->setWhere(op.toNode());
 }
 
-void SelectManager::setWhere(Not::Pointer op)
+void SelectManager::setWhere(const Not::Pointer &op)
 {
     context()->setWhere(op);
 }
 
-void SelectManager::setLimit(Limit::Pointer limit)
+void SelectManager::setLimit(const Limit::Pointer &limit)
 {
     // TODO: add TOP
     ast()->setLimit(limit);
@@ -65,7 +65,7 @@ Limit::Pointer SelectManager::limit() const
     return ast()->limit();
 }
 
-void SelectManager::setOffset(Offset::Pointer offset)
+void SelectManager::setOffset(const Offset::Pointer &offset)
 {
     ast()->setOffset(offset);
 }
@@ -123,13 +123,13 @@ SelectManager &SelectManager::select(std::initializer_list<const char *> project
     return *this;
 }
 
-SelectManager &SelectManager::select(SqlLiteral::Pointer sqlLiteral)
+SelectManager &SelectManager::select(const SqlLiteral::Pointer &sqlLiteral)
 {
     context()->addProjection(sqlLiteral);
     return *this;
 }
 
-SelectManager &SelectManager::order(AbstractOrder::Pointer order)
+SelectManager &SelectManager::order(const AbstractOrder::Pointer &order)
 {
     ast()->addOrder(order);
     return *this;
@@ -212,7 +212,7 @@ SelectManager &SelectManager::take(int limit)
     return take(Limit::create(value));
 }
 
-SelectManager &SelectManager::take(Limit::Pointer limit)
+SelectManager &SelectManager::take(const Limit::Pointer &limit)
 {
     ast()->setLimit(limit);
     return *this;
@@ -224,31 +224,31 @@ SelectManager &SelectManager::skip(int offset)
     return skip(Offset::create(value));
 }
 
-SelectManager &SelectManager::skip(Offset::Pointer offset)
+SelectManager &SelectManager::skip(const Offset::Pointer &offset)
 {
     ast()->setOffset(offset);
     return *this;
 }
 
-SelectManager &SelectManager::distinctUnion(SelectCore::Pointer core)
+SelectManager &SelectManager::distinctUnion(const SelectCore::Pointer &core)
 {
     ast()->distinctUnion(core);
     return *this;
 }
 
-SelectManager &SelectManager::unionAll(SelectCore::Pointer core)
+SelectManager &SelectManager::unionAll(const SelectCore::Pointer &core)
 {
     ast()->unionAll(core);
     return *this;
 }
 
-SelectManager &SelectManager::intersect(SelectCore::Pointer core)
+SelectManager &SelectManager::intersect(const SelectCore::Pointer &core)
 {
     ast()->intersect(core);
     return *this;
 }
 
-SelectManager &SelectManager::except(SelectCore::Pointer core)
+SelectManager &SelectManager::except(const SelectCore::Pointer &core)
 {
     ast()->except(core);
     return *this;

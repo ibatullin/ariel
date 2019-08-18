@@ -20,7 +20,7 @@ class BindValueNode : public Node<BindValueNode>
 {
 public:
     BindValueNode() = default;
-    explicit BindValueNode(BindValueData::Pointer d);
+    explicit BindValueNode(const BindValueData::Pointer &d);
     BindValueNode(const BindValueNode &other);
     BindValueNode &operator =(BindValueNode other);
     void setValue(const QVariant &value);

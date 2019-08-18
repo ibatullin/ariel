@@ -14,8 +14,8 @@ class Table;
 class Attribute
 {
 public:
-    Attribute(const QString &name, TableData::Pointer relation);
-    explicit Attribute(AttributeData::Pointer d);
+    Attribute(const QString &name, const TableData::Pointer &relation);
+    explicit Attribute(const AttributeData::Pointer &d);
     void setName(const QString &name);
     QString name() const;
     Table relation() const;

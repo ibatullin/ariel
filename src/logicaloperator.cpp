@@ -3,17 +3,17 @@
 
 namespace Ariel {
 
-LogicalOperator::LogicalOperator(And::Pointer node)
+LogicalOperator::LogicalOperator(const And::Pointer &node)
     : m_node(node)
 {
 }
 
-LogicalOperator::LogicalOperator(Or::Pointer node)
+LogicalOperator::LogicalOperator(const Or::Pointer &node)
     : m_node(node)
 {
 }
 
-LogicalOperator::LogicalOperator(Not::Pointer node)
+LogicalOperator::LogicalOperator(const Not::Pointer &node)
     : m_node(node)
 {
 }
@@ -28,17 +28,17 @@ Grouping::Pointer LogicalOperator::toGroupingNode() const
     return Grouping::create(m_node);
 }
 
-LogicalOperator LogicalOperator::andOperator(NodePointer lhs, NodePointer rhs)
+LogicalOperator LogicalOperator::andOperator(const NodePointer &lhs, const NodePointer &rhs)
 {
     return LogicalOperator(And::create(lhs, rhs));
 }
 
-LogicalOperator LogicalOperator::orOperator(NodePointer lhs, NodePointer rhs)
+LogicalOperator LogicalOperator::orOperator(const NodePointer &lhs, const NodePointer &rhs)
 {
     return LogicalOperator(Or::create(lhs, rhs));
 }
 
-LogicalOperator LogicalOperator::notOperator(NodePointer node)
+LogicalOperator LogicalOperator::notOperator(const NodePointer &node)
 {
     return LogicalOperator(Not::create(node));
 }

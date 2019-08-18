@@ -93,7 +93,7 @@ public:
     AbstractVisitor() = default;
     virtual ~AbstractVisitor() = default;
 
-    bool visitNode(NodePointer node, AbstractCollector &collector);
+    bool visitNode(const NodePointer &node, AbstractCollector &collector);
 
     virtual void visit(const And &node,                AbstractCollector &collector) = 0;
     virtual void visit(const Ascending &node,          AbstractCollector &collector) = 0;
@@ -149,7 +149,7 @@ public:
     }
 
 protected:
-    void maybeVisit(NodePointer node, AbstractCollector &collector);
+    void maybeVisit(const NodePointer &node, AbstractCollector &collector);
 
     template<typename T>
     void collect(const QList<QExplicitlySharedDataPointer<T>> &nodes, AbstractCollector &collector,

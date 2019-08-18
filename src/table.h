@@ -22,7 +22,7 @@ class Table
 public:
     Table();
     explicit Table(const QString &name);
-    explicit Table(TableData::Pointer d);
+    explicit Table(const TableData::Pointer &d);
     void setName(const QString &name);
     QString name() const;
 
@@ -33,8 +33,8 @@ public:
     SelectManager select(const QString &projection) const;
     SelectManager select(const QStringList &projections) const;
     SelectManager select(std::initializer_list<const char *> projections) const;
-    SelectManager select(SqlLiteral::Pointer sqlLiteral) const;
-    SelectManager order(AbstractOrder::Pointer order) const;
+    SelectManager select(const SqlLiteral::Pointer &sqlLiteral) const;
+    SelectManager order(const AbstractOrder::Pointer &order) const;
     SelectManager where(const Attribute &attribute) const;
     SelectManager where(const ComparisonOperator &op) const;
     SelectManager where(const LogicalOperator &op) const;
@@ -50,7 +50,7 @@ public:
     UpdateManager update(const Attribute &attribute, const BindValue &value) const;
     DeleteManager deleteWhere(const ComparisonOperator &op) const;
     DeleteManager deleteWhere(const LogicalOperator &op) const;
-    DeleteManager deleteWhere(Not::Pointer op) const;
+    DeleteManager deleteWhere(const Not::Pointer &op) const;
 
     TableNode::Pointer toNode() const;
     Attribute operator[](const QString &name) const;

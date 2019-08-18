@@ -12,7 +12,7 @@ AbstractOrder::AbstractOrder(AbstractOrder::Direction direction)
 {
 }
 
-AbstractOrder::AbstractOrder(NodePointer expression, AbstractOrder::Direction direction)
+AbstractOrder::AbstractOrder(const NodePointer &expression, AbstractOrder::Direction direction)
     : AbstractUnaryNode(expression),
       m_direction(direction)
 {
@@ -24,7 +24,7 @@ Ascending::Ascending()
 {
 }
 
-Ascending::Ascending(NodePointer expression)
+Ascending::Ascending(const NodePointer &expression)
     : Order(expression, AbstractOrder::Direction::Ascending)
 {
 }
@@ -35,7 +35,7 @@ Descending::Descending()
 {
 }
 
-Descending::Descending(NodePointer expression)
+Descending::Descending(const NodePointer &expression)
     : Order(expression, AbstractOrder::Direction::Descending)
 {
 }

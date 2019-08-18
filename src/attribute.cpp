@@ -5,14 +5,14 @@
 
 namespace Ariel {
 
-Attribute::Attribute(const QString &name, TableData::Pointer relation)
+Attribute::Attribute(const QString &name, const TableData::Pointer &relation)
     : d(new AttributeData)
 {
     d->name = name;
     d->relation = relation;
 }
 
-Attribute::Attribute(AttributeData::Pointer d)
+Attribute::Attribute(const AttributeData::Pointer &d)
     : d(d)
 {
 }

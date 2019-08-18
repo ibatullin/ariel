@@ -15,7 +15,7 @@ Table::Table(const QString &name)
 }
 
 
-Table::Table(TableData::Pointer d)
+Table::Table(const TableData::Pointer &d)
     : d(d)
 {
 }
@@ -65,12 +65,12 @@ SelectManager Table::select(std::initializer_list<const char *> projections) con
     return from().select(projections);
 }
 
-SelectManager Table::select(SqlLiteral::Pointer sqlLiteral) const
+SelectManager Table::select(const SqlLiteral::Pointer &sqlLiteral) const
 {
     return from().select(sqlLiteral);
 }
 
-SelectManager Table::order(AbstractOrder::Pointer order) const
+SelectManager Table::order(const AbstractOrder::Pointer &order) const
 {
     return from().order(order);
 }
@@ -145,7 +145,7 @@ DeleteManager Table::deleteWhere(const LogicalOperator &op) const
     return deleteManager().where(op);
 }
 
-DeleteManager Table::deleteWhere(Not::Pointer op) const
+DeleteManager Table::deleteWhere(const Not::Pointer &op) const
 {
     return deleteManager().where(op);
 }

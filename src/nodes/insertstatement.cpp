@@ -19,7 +19,7 @@ InsertStatement &InsertStatement::operator =(InsertStatement other)
     return *this;
 }
 
-void InsertStatement::setRelation(TableNode::Pointer relation)
+void InsertStatement::setRelation(const TableNode::Pointer &relation)
 {
     m_relation = relation;
 }
@@ -34,7 +34,7 @@ void InsertStatement::setColumns(const QList<UnqualifiedColumn::Pointer> columns
     m_columns = columns;
 }
 
-void InsertStatement::addColumn(UnqualifiedColumn::Pointer column)
+void InsertStatement::addColumn(const UnqualifiedColumn::Pointer &column)
 {
     m_columns.append(column);
 }
@@ -54,18 +54,18 @@ void InsertStatement::addValue(const QVariant &value)
     addValue(LiteralValue::valueNode(value));
 }
 
-void InsertStatement::addValue(NodePointer value)
+void InsertStatement::addValue(const NodePointer &value)
 {
     m_values.append(value);
 }
 
-void InsertStatement::addValue(UnqualifiedColumn::Pointer column, const QVariant &value)
+void InsertStatement::addValue(const UnqualifiedColumn::Pointer &column, const QVariant &value)
 {
     addColumn(column);
     addValue(value);
 }
 
-void InsertStatement::addValue(UnqualifiedColumn::Pointer column, BindValueNode::Pointer value)
+void InsertStatement::addValue(const UnqualifiedColumn::Pointer &column, const BindValueNode::Pointer &value)
 {
     addColumn(column);
     addValue(value);
@@ -76,7 +76,7 @@ QList<NodePointer> InsertStatement::values() const
     return m_values;
 }
 
-void InsertStatement::setSelect(SelectStatement::Pointer select)
+void InsertStatement::setSelect(const SelectStatement::Pointer &select)
 {
     m_select = select;
 }

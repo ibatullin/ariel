@@ -15,10 +15,10 @@ public:
 
     AbstractLogicalOperatorNode() = default;
     AbstractLogicalOperatorNode(const AbstractLogicalOperatorNode &other);
-    AbstractLogicalOperatorNode(NodePointer left, NodePointer right);
+    AbstractLogicalOperatorNode(const NodePointer &left, const NodePointer &right);
     AbstractLogicalOperatorNode &operator =(AbstractLogicalOperatorNode other);
     QList<NodePointer> operands() const;
-    void addOperand(NodePointer operand);
+    void addOperand(const NodePointer &operand);
 
 private:
     QList<NodePointer> m_operands;

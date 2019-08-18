@@ -20,7 +20,7 @@ public:
 protected:
     AbstractOrder() = default;
     explicit AbstractOrder(Direction direction);
-    AbstractOrder(NodePointer expression, Direction direction);
+    AbstractOrder(const NodePointer &expression, Direction direction);
 
 private:
     Direction m_direction = Direction::Ascending;
@@ -54,7 +54,7 @@ class Ascending : public Order<Ascending>,
 public:
     using NodeMethods::Pointer;
     Ascending();
-    explicit Ascending(NodePointer expression);
+    explicit Ascending(const NodePointer &expression);
 };
 
 
@@ -65,7 +65,7 @@ class Descending : public Order<Descending>,
 public:
     using NodeMethods::Pointer;
     Descending();
-    explicit Descending(NodePointer expression);
+    explicit Descending(const NodePointer &expression);
 };
 
 } // namespace Ariel

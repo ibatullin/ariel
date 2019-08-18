@@ -17,20 +17,20 @@ public:
     UpdateStatement() = default;
     UpdateStatement(const UpdateStatement &other);
     UpdateStatement &operator =(UpdateStatement other);
-    void setRelation(TableNode::Pointer relation);
+    void setRelation(const TableNode::Pointer &relation);
     TableNode::Pointer relation() const;
     void setWheres(const QList<NodePointer> &wheres);
-    void addWhere(NodePointer where);
+    void addWhere(const NodePointer &where);
     QList<NodePointer> wheres() const;
     void setOrders(const QList<AbstractOrder::Pointer> &orders);
-    void addOrder(AbstractOrder::Pointer order);
+    void addOrder(const AbstractOrder::Pointer &order);
     QList<AbstractOrder::Pointer> orders() const;
-    void setLimit(Limit::Pointer limit);
+    void setLimit(const Limit::Pointer &limit);
     Limit::Pointer limit() const;
     void setValues(const QList<Assignment::Pointer> &assignments);
-    void addValue(Assignment::Pointer assignment);
-    void addValue(UnqualifiedColumn::Pointer column, const QVariant &value);
-    void addValue(UnqualifiedColumn::Pointer column, BindValueNode::Pointer value);
+    void addValue(const Assignment::Pointer &assignment);
+    void addValue(const UnqualifiedColumn::Pointer &column, const QVariant &value);
+    void addValue(const UnqualifiedColumn::Pointer &column, const BindValueNode::Pointer &value);
     QList<Assignment::Pointer> values() const;
 
 private:

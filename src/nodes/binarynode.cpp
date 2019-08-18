@@ -21,7 +21,7 @@ AbstractBinaryNode &AbstractBinaryNode::operator =(AbstractBinaryNode other)
     return *this;
 }
 
-void AbstractBinaryNode::setLeft(NodePointer node)
+void AbstractBinaryNode::setLeft(const NodePointer &node)
 {
     m_left = node;
 }
@@ -36,7 +36,7 @@ NodePointer AbstractBinaryNode::left() const
     return m_left;
 }
 
-void AbstractBinaryNode::setRight(NodePointer node)
+void AbstractBinaryNode::setRight(const NodePointer &node)
 {
     m_right = node;
 }

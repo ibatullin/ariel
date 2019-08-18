@@ -11,7 +11,7 @@ class TableNode : public Node<TableNode>
 {
 public:
     TableNode();
-    explicit TableNode(TableData::Pointer d);
+    explicit TableNode(const TableData::Pointer &d);
     TableNode(const TableNode &other);
     TableNode &operator =(TableNode other);
     QString name() const;

@@ -9,7 +9,7 @@ AbstractLogicalOperatorNode::AbstractLogicalOperatorNode(const AbstractLogicalOp
     copy(m_operands, other.m_operands);
 }
 
-AbstractLogicalOperatorNode::AbstractLogicalOperatorNode(NodePointer left, NodePointer right)
+AbstractLogicalOperatorNode::AbstractLogicalOperatorNode(const NodePointer &left, const NodePointer &right)
     : m_operands({ left, right })
 {
 }
@@ -25,7 +25,7 @@ QList<NodePointer> AbstractLogicalOperatorNode::operands() const
     return m_operands;
 }
 
-void AbstractLogicalOperatorNode::addOperand(NodePointer operand)
+void AbstractLogicalOperatorNode::addOperand(const NodePointer &operand)
 {
     m_operands.append(operand);
 }

@@ -35,13 +35,13 @@ SelectStatement &SelectStatement::operator =(SelectStatement other)
     return *this;
 }
 
-void SelectStatement::setOrder(AbstractOrder::Pointer order)
+void SelectStatement::setOrder(const AbstractOrder::Pointer &order)
 {
     m_orders.clear();
     addOrder(order);
 }
 
-void SelectStatement::addOrder(AbstractOrder::Pointer order)
+void SelectStatement::addOrder(const AbstractOrder::Pointer &order)
 {
     m_orders.append(order);
 }
@@ -51,7 +51,7 @@ QList<AbstractOrder::Pointer> SelectStatement::orders() const
     return m_orders;
 }
 
-void SelectStatement::setLimit(Limit::Pointer limit)
+void SelectStatement::setLimit(const Limit::Pointer &limit)
 {
     m_limit = limit;
 }
@@ -61,7 +61,7 @@ Limit::Pointer SelectStatement::limit() const
     return m_limit;
 }
 
-void SelectStatement::setOffset(Offset::Pointer offset)
+void SelectStatement::setOffset(const Offset::Pointer &offset)
 {
     m_offset = offset;
 }
@@ -71,7 +71,7 @@ Offset::Pointer SelectStatement::offset() const
     return m_offset;
 }
 
-void SelectStatement::merge(NodeMethods::Pointer other)
+void SelectStatement::merge(const SelectStatement::Pointer &other)
 {
     m_orders.append(other->orders());
 
@@ -92,7 +92,8 @@ SelectCore::Pointer SelectStatement::context() const
     return m_context;
 }
 
-void SelectStatement::addCore(SelectCore::Pointer core, AbstractCompoundOperator::Pointer compoundOperator)
+void SelectStatement::addCore(const SelectCore::Pointer &core,
+                              const AbstractCompoundOperator::Pointer &compoundOperator)
 {
     if (m_operator)
         m_operator->setRight(compoundOperator);
@@ -103,42 +104,46 @@ void SelectStatement::addCore(SelectCore::Pointer core, AbstractCompoundOperator
     m_context = core;
 }
 
-void SelectStatement::distinctUnion(SelectCore::Pointer core)
+void SelectStatement::distinctUnion(const SelectCore::Pointer &core)
 {
     addCore<Union>(core);
 }
 
-void SelectStatement::unionAll(SelectCore::Pointer core)
+void SelectStatement::unionAll(const SelectCore::Pointer &core)
 {
     addCore<UnionAll>(core);
 }
 
-void SelectStatement::intersect(SelectCore::Pointer core)
+void SelectStatement::intersect(const SelectCore::Pointer &core)
 {
     addCore<Intersect>(core);
 }
 
-void SelectStatement::except(SelectCore::Pointer core)
+void SelectStatement::except(const SelectCore::Pointer &core)
 {
     addCore<Except>(core);
 }
 
-SelectStatement SelectStatement::distinctUnion(SelectCore::Pointer lhs, SelectCore::Pointer rhs)
+SelectStatement SelectStatement::distinctUnion(const SelectCore::Pointer &lhs,
+                                               const SelectCore::Pointer &rhs)
 {
     return create<Union>(lhs, rhs);
 }
 
-SelectStatement SelectStatement::unionAll(SelectCore::Pointer lhs, SelectCore::Pointer rhs)
+SelectStatement SelectStatement::unionAll(const SelectCore::Pointer &lhs,
+                                          const SelectCore::Pointer &rhs)
 {
     return create<UnionAll>(lhs, rhs);
 }
 
-SelectStatement SelectStatement::intersect(SelectCore::Pointer lhs, SelectCore::Pointer rhs)
+SelectStatement SelectStatement::intersect(const SelectCore::Pointer &lhs,
+                                           const SelectCore::Pointer &rhs)
 {
     return create<Intersect>(lhs, rhs);
 }
 
-SelectStatement SelectStatement::except(SelectCore::Pointer lhs, SelectCore::Pointer rhs)
+SelectStatement SelectStatement::except(const SelectCore::Pointer &lhs,
+                                        const SelectCore::Pointer &rhs)
 {
     return create<Except>(lhs, rhs);
 }

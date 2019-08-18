@@ -7,7 +7,7 @@ BindValue::BindValue(const QVariant &value)
 {
 }
 
-BindValue::BindValue(BindValueData::Pointer d)
+BindValue::BindValue(const BindValueData::Pointer &d)
     : d(d)
 {
 }
