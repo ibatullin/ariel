@@ -1,7 +1,5 @@
 #include "literalvalue.h"
 
-#include <QDebug>
-
 namespace Ariel {
 
 NodePointer LiteralValue::valueNode(const QVariant &value)

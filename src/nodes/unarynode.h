@@ -6,7 +6,6 @@
 #include "literalvalue.h"
 
 #include <QVariant>
-#include <QDebug>
 
 namespace Ariel {
 

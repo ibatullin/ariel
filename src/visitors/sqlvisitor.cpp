@@ -12,7 +12,6 @@
 
 #include <QSqlField>
 #include <QSqlDatabase>
-#include <QDebug>
 
 namespace Ariel {
 
