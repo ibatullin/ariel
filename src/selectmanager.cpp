@@ -286,9 +286,8 @@ SelectManager SelectManager::distinctUnion(SelectManager lhs, const SelectManage
 
 SelectManager SelectManager::unionAll(SelectManager lhs, const SelectManager &rhs)
 {
-    SelectManager manager(lhs);
-    manager.detach();
-    return manager.unionAll(rhs);
+    lhs.detach();
+    return lhs.unionAll(rhs);
 }
 
 SelectManager SelectManager::intersect(SelectManager lhs, const SelectManager &rhs)
