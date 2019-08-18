@@ -395,11 +395,11 @@ void ArielTest::logicalOperators_data()
         << QStringLiteral("posts.column1 > 1 AND posts.column2 > 1 AND posts.column3 > 1");
 
     QTest::newRow("a > 1 && b > 1 || c > 1")
-        << where(column1 > 1 && column2 > 1 || column3 > 1)
+        << where((column1 > 1 && column2 > 1) || column3 > 1)
         << QStringLiteral("posts.column1 > 1 AND posts.column2 > 1 OR posts.column3 > 1");
 
     QTest::newRow("a > 1 || b > 1 && c > 1")
-        << where(column1 > 1 || column2 > 1 && column3 > 1)
+        << where(column1 > 1 || (column2 > 1 && column3 > 1))
         << QStringLiteral("posts.column1 > 1 OR (posts.column2 > 1 AND posts.column3 > 1)");
 
     QTest::newRow("a > 1 || b > 1 || c > 1")
@@ -604,33 +604,34 @@ void ArielTest::compoundSelectStatement_data()
     QTest::addColumn<QString>("sql");
     QTest::addColumn<QString>("result");
 
-    const auto select1 = posts.select(column1).where(column1 == 1);
-    const auto select2 = posts.select(column2).where(column2 == 2);
+    {
+        const auto select1 = posts.select(column1).where(column1 == 1);
+        const auto select2 = posts.select(column2).where(column2 == 2);
 
-    QTest::newRow("union")
-        << SelectManager::distinctUnion(select1, select2).toSql()
-        << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
-                          " UNION "
-                          "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
+        QTest::newRow("union")
+            << SelectManager::distinctUnion(select1, select2).toSql()
+            << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
+                              " UNION "
+                              "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
 
-    QTest::newRow("union all")
-        << SelectManager::unionAll(select1, select2).toSql()
-        << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
-                          " UNION ALL "
-                          "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
+        QTest::newRow("union all")
+            << SelectManager::unionAll(select1, select2).toSql()
+            << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
+                              " UNION ALL "
+                              "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
 
-    QTest::newRow("intersect")
-        << SelectManager::intersect(select1, select2).toSql()
-        << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
-                          " INTERSECT "
-                          "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
+        QTest::newRow("intersect")
+            << SelectManager::intersect(select1, select2).toSql()
+            << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
+                              " INTERSECT "
+                              "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
 
-    QTest::newRow("except")
-        << SelectManager::except(select1, select2).toSql()
-        << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
-                          " EXCEPT "
-                          "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
-
+        QTest::newRow("except")
+            << SelectManager::except(select1, select2).toSql()
+            << QStringLiteral("SELECT posts.column1 FROM posts WHERE posts.column1 = 1"
+                              " EXCEPT "
+                              "SELECT posts.column2 FROM posts WHERE posts.column2 = 2");
+    }
 
     {
         const auto select1 = posts.select(column1).where(column1 == 1);
