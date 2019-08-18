@@ -8,7 +8,7 @@ BindValueData::BindValueData(const QVariant &value)
 }
 
 
-BindValueNode::BindValueNode(BindValueData::Pointer d)
+BindValueNode::BindValueNode(const BindValueData::Pointer &d)
     : d(d)
 {
 }

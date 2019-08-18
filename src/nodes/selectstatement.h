@@ -18,35 +18,35 @@ public:
     SelectStatement(const SelectStatement &other);
     SelectStatement &operator =(SelectStatement other);
 
-    void setOrder(AbstractOrder::Pointer order);
-    void addOrder(AbstractOrder::Pointer order);
+    void setOrder(const AbstractOrder::Pointer &order);
+    void addOrder(const AbstractOrder::Pointer &order);
     QList<AbstractOrder::Pointer> orders() const;
-    void setLimit(Limit::Pointer limit);
+    void setLimit(const Limit::Pointer &limit);
     Limit::Pointer limit() const;
-    void setOffset(Offset::Pointer offset);
+    void setOffset(const Offset::Pointer &offset);
     Offset::Pointer offset() const;
-    void merge(SelectStatement::Pointer other);
+    void merge(const SelectStatement::Pointer &other);
     NodePointer root() const;
     SelectCore::Pointer context() const;
 
-    void distinctUnion(SelectCore::Pointer core);
-    void unionAll(SelectCore::Pointer core);
-    void intersect(SelectCore::Pointer core);
-    void except(SelectCore::Pointer core);
+    void distinctUnion(const SelectCore::Pointer &core);
+    void unionAll(const SelectCore::Pointer &core);
+    void intersect(const SelectCore::Pointer &core);
+    void except(const SelectCore::Pointer &core);
 
-    static SelectStatement distinctUnion(SelectCore::Pointer lhs, SelectCore::Pointer rhs);
-    static SelectStatement unionAll(SelectCore::Pointer lhs, SelectCore::Pointer rhs);
-    static SelectStatement intersect(SelectCore::Pointer lhs, SelectCore::Pointer rhs);
-    static SelectStatement except(SelectCore::Pointer lhs, SelectCore::Pointer rhs);
+    static SelectStatement distinctUnion(const SelectCore::Pointer &lhs, const SelectCore::Pointer &rhs);
+    static SelectStatement unionAll(const SelectCore::Pointer &lhs, const SelectCore::Pointer &rhs);
+    static SelectStatement intersect(const SelectCore::Pointer &lhs, const SelectCore::Pointer &rhs);
+    static SelectStatement except(const SelectCore::Pointer &lhs, const SelectCore::Pointer &rhs);
 
     using Node<SelectStatement>::create;
 
 private:
-    void addCore(SelectCore::Pointer core, AbstractCompoundOperator::Pointer compoundOperator);
+    void addCore(const SelectCore::Pointer &core, const AbstractCompoundOperator::Pointer &compoundOperator);
 
     template<typename T>
     typename std::enable_if<std::is_base_of<AbstractCompoundOperator, T>::value, void>::type
-    addCore(SelectCore::Pointer core)
+    addCore(const SelectCore::Pointer &core)
     {
         auto compoundOperator = T::create(m_context, core);
         addCore(core, compoundOperator);
@@ -54,7 +54,7 @@ private:
 
     template<typename T>
     static typename std::enable_if<std::is_base_of<AbstractCompoundOperator, T>::value, SelectStatement>::type
-    create(SelectCore::Pointer core1, SelectCore::Pointer core2)
+    create(const SelectCore::Pointer &core1, const SelectCore::Pointer &core2)
     {
         SelectStatement s;
         s.m_operator = T::create(core1, core2);

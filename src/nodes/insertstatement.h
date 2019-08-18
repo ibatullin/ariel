@@ -16,18 +16,18 @@ public:
     InsertStatement() = default;
     InsertStatement(const InsertStatement &other);
     InsertStatement &operator =(InsertStatement other);
-    void setRelation(TableNode::Pointer relation);
+    void setRelation(const TableNode::Pointer &relation);
     TableNode::Pointer relation() const;
     void setColumns(const QList<UnqualifiedColumn::Pointer> columns);
-    void addColumn(UnqualifiedColumn::Pointer column);
+    void addColumn(const UnqualifiedColumn::Pointer &column);
     QList<UnqualifiedColumn::Pointer> columns() const;
     void setValues(const QList<NodePointer> &values);
     void addValue(const QVariant &value);
-    void addValue(NodePointer value);
-    void addValue(UnqualifiedColumn::Pointer column, const QVariant &value);
-    void addValue(UnqualifiedColumn::Pointer, BindValueNode::Pointer value);
+    void addValue(const NodePointer &value);
+    void addValue(const UnqualifiedColumn::Pointer &column, const QVariant &value);
+    void addValue(const UnqualifiedColumn::Pointer &column, const BindValueNode::Pointer &value);
     QList<NodePointer> values() const;
-    void setSelect(SelectStatement::Pointer select);
+    void setSelect(const SelectStatement::Pointer &select);
     SelectStatement::Pointer select() const;
 
 private:

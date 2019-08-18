@@ -7,7 +7,7 @@ TableNode::TableNode()
 {
 }
 
-TableNode::TableNode(TableData::Pointer d)
+TableNode::TableNode(const TableData::Pointer &d)
     : d(d)
 {
 }

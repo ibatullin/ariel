@@ -6,7 +6,7 @@
 
 namespace Ariel {
 
-UpdateManager::UpdateManager(TableNode::Pointer table)
+UpdateManager::UpdateManager(const TableNode::Pointer &table)
 {
     this->table(table);
 }
@@ -16,7 +16,7 @@ UpdateManager::UpdateManager(const Table &table)
     this->table(table);
 }
 
-UpdateManager::UpdateManager(TableData::Pointer table)
+UpdateManager::UpdateManager(const TableData::Pointer &table)
 {
     this->table(TableNode::create(table));
 }
@@ -26,7 +26,7 @@ UpdateManager &UpdateManager::table(const Table &table)
     return this->table(table.toNode());
 }
 
-UpdateManager &UpdateManager::table(TableNode::Pointer table)
+UpdateManager &UpdateManager::table(const TableNode::Pointer &table)
 {
     ast()->setRelation(table);
     return *this;
@@ -44,13 +44,13 @@ UpdateManager &UpdateManager::where(const LogicalOperator &op)
     return *this;
 }
 
-UpdateManager &UpdateManager::where(Not::Pointer op)
+UpdateManager &UpdateManager::where(const Not::Pointer &op)
 {
     ast()->addWhere(op);
     return *this;
 }
 
-UpdateManager &UpdateManager::order(AbstractOrder::Pointer order)
+UpdateManager &UpdateManager::order(const AbstractOrder::Pointer &order)
 {
     ast()->addOrder(order);
     return *this;

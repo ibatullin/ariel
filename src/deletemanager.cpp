@@ -12,10 +12,10 @@ DeleteManager::DeleteManager(const Table &table)
     from(table);
 }
 
-DeleteManager::DeleteManager(TableData::Pointer table)
+DeleteManager::DeleteManager(const TableData::Pointer &table)
     : TreeManager<DeleteStatement>(DeleteStatement::create())
 {
-    from(table);
+    from(TableNode::create(table));
 }
 
 DeleteManager &DeleteManager::from(const Table &table)
@@ -24,7 +24,7 @@ DeleteManager &DeleteManager::from(const Table &table)
     return *this;
 }
 
-DeleteManager &DeleteManager::from(TableNode::Pointer table)
+DeleteManager &DeleteManager::from(const TableNode::Pointer &table)
 {
     ast()->setRelation(table);
     return *this;
@@ -42,7 +42,7 @@ DeleteManager &DeleteManager::where(const LogicalOperator &op)
     return *this;
 }
 
-DeleteManager &DeleteManager::where(Not::Pointer op)
+DeleteManager &DeleteManager::where(const Not::Pointer &op)
 {
     ast()->addWhere(op);
     return *this;

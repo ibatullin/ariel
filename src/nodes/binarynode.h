@@ -16,10 +16,10 @@ public:
     AbstractBinaryNode(const AbstractBinaryNode &other);
     AbstractBinaryNode &operator =(AbstractBinaryNode other);
 
-    void setLeft(NodePointer node);
+    void setLeft(const NodePointer &node);
     void setLeft(AbstractNode *node);
     NodePointer left() const;
-    void setRight(NodePointer node);
+    void setRight(const NodePointer &node);
     void setRight(AbstractNode *node);
     NodePointer right() const;
 

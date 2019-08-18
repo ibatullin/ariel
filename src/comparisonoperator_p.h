@@ -13,8 +13,8 @@ class BaseOperatorHolder
 {
 public:
     virtual ~BaseOperatorHolder() = default;
-    virtual AbstractComparisonOperatorNode::Pointer createDirectOperator(NodePointer left, NodePointer right) const = 0;
-    virtual AbstractComparisonOperatorNode::Pointer createOppositeOperator(NodePointer left, NodePointer right) const = 0;
+    virtual AbstractComparisonOperatorNode::Pointer createDirectOperator(const NodePointer &left, const NodePointer &right) const = 0;
+    virtual AbstractComparisonOperatorNode::Pointer createOppositeOperator(const NodePointer &left, const NodePointer &right) const = 0;
     virtual QSharedPointer<BaseOperatorHolder> oppositeHolder() const = 0;
 };
 
@@ -23,12 +23,12 @@ template<typename Op1, typename Op2>
 class OperatorHolder : public BaseOperatorHolder
 {
 public:
-    AbstractComparisonOperatorNode::Pointer createDirectOperator(NodePointer left, NodePointer right) const override
+    AbstractComparisonOperatorNode::Pointer createDirectOperator(const NodePointer &left, const NodePointer &right) const override
     {
         return Op1::create(left, right);
     }
 
-    AbstractComparisonOperatorNode::Pointer createOppositeOperator(NodePointer left, NodePointer right) const override
+    AbstractComparisonOperatorNode::Pointer createOppositeOperator(const NodePointer &left, const NodePointer &right) const override
     {
         return Op2::create(left, right);
     }
@@ -52,19 +52,19 @@ public:
 
 template<>
 AbstractComparisonOperatorNode::Pointer
-OperatorHolder<Is, IsNot>::createDirectOperator(NodePointer left, NodePointer) const;
+OperatorHolder<Is, IsNot>::createDirectOperator(const NodePointer &left, const NodePointer &right) const;
 
 template<>
 AbstractComparisonOperatorNode::Pointer
-OperatorHolder<Is, IsNot>::createOppositeOperator(NodePointer left, NodePointer) const;
+OperatorHolder<Is, IsNot>::createOppositeOperator(const NodePointer &left, const NodePointer &right) const;
 
 template<>
 AbstractComparisonOperatorNode::Pointer
-OperatorHolder<IsNot, Is>::createDirectOperator(NodePointer left, NodePointer) const;
+OperatorHolder<IsNot, Is>::createDirectOperator(const NodePointer &left, const NodePointer &right) const;
 
 template<>
 AbstractComparisonOperatorNode::Pointer
-OperatorHolder<IsNot, Is>::createOppositeOperator(NodePointer left, NodePointer) const;
+OperatorHolder<IsNot, Is>::createOppositeOperator(const NodePointer &left, const NodePointer &) const;
 
 } // namespace Ariel
 

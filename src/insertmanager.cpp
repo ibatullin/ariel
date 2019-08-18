@@ -5,7 +5,7 @@
 
 namespace Ariel {
 
-InsertManager::InsertManager(TableData::Pointer table)
+InsertManager::InsertManager(const TableData::Pointer &table)
     : TreeManager(InsertStatement::create())
 {
     into(TableNode::create(table));
@@ -22,7 +22,7 @@ InsertManager &InsertManager::into(const Table &table)
     return into(table.toNode());
 }
 
-InsertManager &InsertManager::into(TableNode::Pointer table)
+InsertManager &InsertManager::into(const TableNode::Pointer &table)
 {
     ast()->setRelation(table);
     return *this;
@@ -63,7 +63,7 @@ QList<NodePointer> InsertManager::values() const
     return ast()->values();
 }
 
-InsertManager InsertManager::select(SelectStatement::Pointer select)
+InsertManager InsertManager::select(const SelectStatement::Pointer &select)
 {
     ast()->setSelect(select);
     return *this;

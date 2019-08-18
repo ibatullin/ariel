@@ -13,12 +13,12 @@ public:
     DeleteStatement() = default;
     DeleteStatement(const DeleteStatement &other);
     DeleteStatement &operator =(DeleteStatement other);
-    void setRelation(TableNode::Pointer relation);
+    void setRelation(const TableNode::Pointer &relation);
     TableNode::Pointer relation() const;
     void setWheres(const QList<NodePointer> &wheres);
-    void addWhere(NodePointer where);
+    void addWhere(const NodePointer &where);
     QList<NodePointer> wheres() const;
-    void setLimit(Limit::Pointer limit);
+    void setLimit(const Limit::Pointer &limit);
     Limit::Pointer limit() const;
 
 private:

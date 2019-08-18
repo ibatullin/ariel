@@ -15,16 +15,16 @@ class BaseOperatorHolder;
 class ComparisonOperator
 {
 public:
-    explicit ComparisonOperator(AbstractComparisonOperatorNode::Pointer node);
-    ComparisonOperator(AbstractComparisonOperatorNode::Pointer node,
-                       QSharedPointer<BaseOperatorHolder> holder);
+    explicit ComparisonOperator(const AbstractComparisonOperatorNode::Pointer &node);
+    ComparisonOperator(const AbstractComparisonOperatorNode::Pointer &node,
+                       const QSharedPointer<BaseOperatorHolder> &holder);
     AbstractComparisonOperatorNode::Pointer toNode() const;
-    static ComparisonOperator equal(NodePointer lhs, NodePointer rhs);
-    static ComparisonOperator notEqual(NodePointer lhs, NodePointer rhs);
-    static ComparisonOperator lessThan(NodePointer lhs, NodePointer rhs);
-    static ComparisonOperator lessThanOrEqual(NodePointer lhs, NodePointer rhs);
-    static ComparisonOperator greaterThan(NodePointer lhs, NodePointer rhs);
-    static ComparisonOperator greaterThanOrEqual(NodePointer lhs, NodePointer rhs);
+    static ComparisonOperator equal(const NodePointer &lhs, const NodePointer &rhs);
+    static ComparisonOperator notEqual(const NodePointer &lhs, const NodePointer &rhs);
+    static ComparisonOperator lessThan(const NodePointer &lhs, const NodePointer &rhs);
+    static ComparisonOperator lessThanOrEqual(const NodePointer &lhs, const NodePointer &rhs);
+    static ComparisonOperator greaterThan(const NodePointer &lhs, const NodePointer &rhs);
+    static ComparisonOperator greaterThanOrEqual(const NodePointer &lhs, const NodePointer &rhs);
 
 protected:
     QSharedPointer<BaseOperatorHolder> holder() const;
@@ -38,16 +38,19 @@ private:
 class SpecialComparisonOperator : public ComparisonOperator
 {
 public:
-    explicit SpecialComparisonOperator(AbstractComparisonOperatorNode::Pointer node,
-                                       QSharedPointer<BaseOperatorHolder> holder);
+    explicit SpecialComparisonOperator(const AbstractComparisonOperatorNode::Pointer &node,
+                                       const QSharedPointer<BaseOperatorHolder> &holder);
 
-    static SpecialComparisonOperator between(AttributeNode::Pointer attribute,
-                                             NodePointer lhs, NodePointer rhs);
-    static SpecialComparisonOperator matches(AttributeNode::Pointer attribute, NodePointer expression);
-    static SpecialComparisonOperator in(AttributeNode::Pointer attribute, NodePointer expression);
-    static SpecialComparisonOperator notIn(AttributeNode::Pointer attribute, NodePointer expression);
-    static SpecialComparisonOperator isNull(AttributeNode::Pointer attribute);
-    static SpecialComparisonOperator isNotNull(AttributeNode::Pointer attribute);
+    static SpecialComparisonOperator between(const AttributeNode::Pointer &attribute,
+                                             const NodePointer &lhs, const NodePointer &rhs);
+    static SpecialComparisonOperator matches(const AttributeNode::Pointer &attribute,
+                                             const NodePointer &expression);
+    static SpecialComparisonOperator in(const AttributeNode::Pointer &attribute,
+                                        const NodePointer &expression);
+    static SpecialComparisonOperator notIn(const AttributeNode::Pointer &attribute,
+                                           const NodePointer &expression);
+    static SpecialComparisonOperator isNull(const AttributeNode::Pointer &attribute);
+    static SpecialComparisonOperator isNotNull(const AttributeNode::Pointer &attribute);
 
     friend SpecialComparisonOperator operator !(const SpecialComparisonOperator &op);
 };

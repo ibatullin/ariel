@@ -13,11 +13,11 @@ class AbstractUnaryNode : public AbstractNode
 {
 public:
     AbstractUnaryNode() = default;
-    explicit AbstractUnaryNode(NodePointer expression);
+    explicit AbstractUnaryNode(const NodePointer &expression);
     AbstractUnaryNode(const AbstractUnaryNode &other);
     AbstractUnaryNode &operator =(AbstractUnaryNode other);
 
-    void setExpression(NodePointer expression);
+    void setExpression(const NodePointer &expression);
     NodePointer expression() const;
 
 protected:

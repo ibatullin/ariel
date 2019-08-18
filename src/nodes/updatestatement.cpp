@@ -21,7 +21,7 @@ UpdateStatement &UpdateStatement::operator =(UpdateStatement other)
     return *this;
 }
 
-void UpdateStatement::setRelation(TableNode::Pointer relation)
+void UpdateStatement::setRelation(const TableNode::Pointer &relation)
 {
     m_relation = relation;
 }
@@ -36,7 +36,7 @@ void UpdateStatement::setWheres(const QList<NodePointer> &wheres)
     m_wheres = wheres;
 }
 
-void UpdateStatement::addWhere(NodePointer where)
+void UpdateStatement::addWhere(const NodePointer &where)
 {
     m_wheres.append(where);
 }
@@ -51,7 +51,7 @@ void UpdateStatement::setOrders(const QList<AbstractOrder::Pointer> &orders)
     m_orders = orders;
 }
 
-void UpdateStatement::addOrder(AbstractOrder::Pointer order)
+void UpdateStatement::addOrder(const AbstractOrder::Pointer &order)
 {
     m_orders.append(order);
 }
@@ -61,7 +61,7 @@ QList<AbstractOrder::Pointer> UpdateStatement::orders() const
     return m_orders;
 }
 
-void UpdateStatement::setLimit(Limit::Pointer limit)
+void UpdateStatement::setLimit(const Limit::Pointer &limit)
 {
     m_limit = limit;
 }
@@ -76,17 +76,17 @@ void UpdateStatement::setValues(const QList<Assignment::Pointer> &assignments)
     m_values = assignments;
 }
 
-void UpdateStatement::addValue(Assignment::Pointer assignment)
+void UpdateStatement::addValue(const Assignment::Pointer &assignment)
 {
     m_values.append(assignment);
 }
 
-void UpdateStatement::addValue(UnqualifiedColumn::Pointer column, const QVariant &value)
+void UpdateStatement::addValue(const UnqualifiedColumn::Pointer &column, const QVariant &value)
 {
     addValue(Assignment::create(column, LiteralValue::valueNode(value)));
 }
 
-void UpdateStatement::addValue(UnqualifiedColumn::Pointer column, BindValueNode::Pointer value)
+void UpdateStatement::addValue(const UnqualifiedColumn::Pointer &column, const BindValueNode::Pointer &value)
 {
     addValue(Assignment::create(column, value));
 }

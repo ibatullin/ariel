@@ -9,7 +9,7 @@ class BindValue
 {
 public:
     explicit BindValue(const QVariant &value);
-    explicit BindValue(BindValueData::Pointer d);
+    explicit BindValue(const BindValueData::Pointer &d);
     void setValue(const QVariant &value);
     QVariant value() const;
     void detach();

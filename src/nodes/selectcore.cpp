@@ -24,7 +24,7 @@ SelectCore &SelectCore::operator =(SelectCore other)
     return *this;
 }
 
-void SelectCore::setSource(JoinSource::Pointer source)
+void SelectCore::setSource(const JoinSource::Pointer &source)
 {
     m_source = source;
 }
@@ -39,24 +39,24 @@ NodePointer SelectCore::from() const
     return m_source->left();
 }
 
-void SelectCore::setProjection(AttributeNode::Pointer projection)
+void SelectCore::setProjection(const AttributeNode::Pointer &projection)
 {
     m_projections.clear();
     addProjection(projection);
 }
 
-void SelectCore::setProjection(SqlLiteral::Pointer literal)
+void SelectCore::setProjection(const SqlLiteral::Pointer &literal)
 {
     m_projections.clear();
     addProjection(literal);
 }
 
-void SelectCore::addProjection(AttributeNode::Pointer projection)
+void SelectCore::addProjection(const AttributeNode::Pointer &projection)
 {
     m_projections.append(projection);
 }
 
-void SelectCore::addProjection(SqlLiteral::Pointer literal)
+void SelectCore::addProjection(const SqlLiteral::Pointer &literal)
 {
     m_projections.append(literal);
 }
@@ -71,13 +71,13 @@ QList<NodePointer> SelectCore::projections() const
     return m_projections;
 }
 
-void SelectCore::setWhere(NodePointer where)
+void SelectCore::setWhere(const NodePointer &where)
 {
     m_wheres.clear();
     addWhere(where);
 }
 
-void SelectCore::addWhere(NodePointer where)
+void SelectCore::addWhere(const NodePointer &where)
 {
     m_wheres.append(where);
 }
@@ -92,13 +92,13 @@ QList<NodePointer> SelectCore::wheres() const
     return m_wheres;
 }
 
-void SelectCore::setGroup(NodePointer group)
+void SelectCore::setGroup(const NodePointer &group)
 {
     m_groups.clear();
     addGroup(group);
 }
 
-void SelectCore::addGroup(NodePointer group)
+void SelectCore::addGroup(const NodePointer &group)
 {
     m_groups.append(group);
 }

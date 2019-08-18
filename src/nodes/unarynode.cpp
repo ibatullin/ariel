@@ -2,7 +2,7 @@
 
 namespace Ariel {
 
-AbstractUnaryNode::AbstractUnaryNode(NodePointer expression)
+AbstractUnaryNode::AbstractUnaryNode(const NodePointer &expression)
     : m_expression(expression)
 {
 }
@@ -18,7 +18,7 @@ AbstractUnaryNode &AbstractUnaryNode::operator =(AbstractUnaryNode other)
     return *this;
 }
 
-void AbstractUnaryNode::setExpression(NodePointer expression)
+void AbstractUnaryNode::setExpression(const NodePointer &expression)
 {
     m_expression = expression;
 }

@@ -6,7 +6,7 @@
 
 namespace Ariel {
 
-bool AbstractVisitor::visitNode(NodePointer node, AbstractCollector &collector)
+bool AbstractVisitor::visitNode(const NodePointer &node, AbstractCollector &collector)
 {
     if (node) {
         node->accept(*this, collector);
@@ -16,7 +16,7 @@ bool AbstractVisitor::visitNode(NodePointer node, AbstractCollector &collector)
     }
 }
 
-void Ariel::AbstractVisitor::maybeVisit(Ariel::NodePointer node, AbstractCollector &collector)
+void Ariel::AbstractVisitor::maybeVisit(const Ariel::NodePointer &node, AbstractCollector &collector)
 {
     if (node) {
         collector << Delimeters::Space;

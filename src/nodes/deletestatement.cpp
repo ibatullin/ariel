@@ -17,7 +17,7 @@ DeleteStatement &DeleteStatement::operator =(DeleteStatement other)
     return *this;
 }
 
-void DeleteStatement::setRelation(TableNode::Pointer relation)
+void DeleteStatement::setRelation(const TableNode::Pointer &relation)
 {
     m_relation = relation;
 }
@@ -32,7 +32,7 @@ void DeleteStatement::setWheres(const QList<NodePointer> &wheres)
     m_wheres = wheres;
 }
 
-void DeleteStatement::addWhere(NodePointer where)
+void DeleteStatement::addWhere(const NodePointer &where)
 {
     m_wheres.append(where);
 }
@@ -42,7 +42,7 @@ QList<NodePointer> DeleteStatement::wheres() const
     return m_wheres;
 }
 
-void DeleteStatement::setLimit(Limit::Pointer limit)
+void DeleteStatement::setLimit(const Limit::Pointer &limit)
 {
     m_limit = limit;
 }
