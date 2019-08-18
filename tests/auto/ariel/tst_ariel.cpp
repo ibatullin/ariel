@@ -333,52 +333,44 @@ void ArielTest::logicalOperators_data()
     QTest::newRow("comparison && comparison")
         << where(comparison && comparison)
         << QString("%1 AND %2")
-               .arg(comparisonSql)
-               .arg(comparisonSql);
+               .arg(comparisonSql, comparisonSql);
 
     QTest::newRow("comparison && logical")
         << where(comparison && logical)
         << QString("%1 AND (%2)")
-               .arg(comparisonSql)
-               .arg(logicalSql);
+               .arg(comparisonSql, logicalSql);
 
     QTest::newRow("logical && comparison")
         << where(logical && comparison)
         << QString("%1 AND %2")
-               .arg(logicalSql)
-               .arg(comparisonSql);
+               .arg(logicalSql, comparisonSql);
 
     QTest::newRow("logical && logical")
         << where(logical && logical)
         << QString("(%1) AND (%2)")
-               .arg(logicalSql)
-               .arg(logicalSql);
+               .arg(logicalSql, logicalSql);
 
 
     // Or
     QTest::newRow("comparison || comparison")
         << where(comparison || comparison)
         << QString("%1 OR %2")
-               .arg(comparisonSql)
-               .arg(comparisonSql);
+               .arg(comparisonSql, comparisonSql);
 
     QTest::newRow("comparison || logical")
         << where(comparison || logical)
         << QString("%1 OR (%2)")
-               .arg(comparisonSql)
-               .arg(logicalSql);
+               .arg(comparisonSql, logicalSql);
 
     QTest::newRow("logical || comparison")
         << where(logical || comparison)
         << QString("%1 OR %2")
-               .arg(logicalSql)
-               .arg(comparisonSql);
+               .arg(logicalSql, comparisonSql);
 
     QTest::newRow("logical || logical")
         << where(logical || logical)
         << QString("(%1) OR (%2)")
-               .arg(logicalSql)
-               .arg(logicalSql);
+               .arg(logicalSql, logicalSql);
 
 
     QTest::newRow("a > 1 && b > 1")
