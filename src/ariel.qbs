@@ -47,7 +47,6 @@ StaticLibrary {
         "nodes/binarynode.h",
         "nodes/bindvalue.cpp",
         "nodes/bindvalue.h",
-        "nodes/comparisonoperators.cpp",
         "nodes/comparisonoperators.h",
         "nodes/compoundoperators.h",
         "nodes/deletestatement.cpp",
