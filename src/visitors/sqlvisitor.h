@@ -6,8 +6,9 @@
 #include "../nodes/order.h"
 #include "../nodes/comparisonoperators.h"
 
-#include <QSqlDriver>
+#include <QDebug>
 #include <QPointer>
+#include <QSqlDriver>
 
 namespace Ariel {
 

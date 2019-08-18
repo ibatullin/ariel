@@ -5,7 +5,6 @@
 #include "../visitors/abstractvisitor.h"
 
 #include <QVariant>
-#include <QDebug>
 
 namespace Ariel {
 

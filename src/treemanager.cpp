@@ -2,6 +2,7 @@
 #include "engine.h"
 
 #include <QSqlDatabase>
+#include <QDebug>
 
 namespace Ariel {
 
