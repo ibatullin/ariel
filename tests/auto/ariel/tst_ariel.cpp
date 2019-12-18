@@ -10,6 +10,7 @@
 #include <QSqlDatabase>
 
 using namespace Ariel;
+using namespace Ariel::Literals;
 
 class ArielTest : public QObject
 {
@@ -47,6 +48,8 @@ private slots:
 
     void sqlite();
     void bindings();
+
+    void literal();
 
 private:
     QString resultSql(const QString &where)
@@ -788,6 +791,17 @@ void ArielTest::bindings()
         QCOMPARE(binds.at(1), QVariant("Hello"));
     }
 }
+
+void ArielTest::literal()
+{
+    const auto manager1 = "posts"_table.select("id")
+                             .where("posts"_table["title"] == "hello"_bind)
+                             .where("posts"_table["id"] == 12_bind);
+
+    QCOMPARE(manager1.toSql(),
+             QStringLiteral("SELECT posts.id FROM posts WHERE posts.title = ? AND posts.id = ?"));
+}
+
 
 QTEST_MAIN(ArielTest);
 

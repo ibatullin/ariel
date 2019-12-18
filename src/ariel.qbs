@@ -38,6 +38,7 @@ StaticLibrary {
         "formatters/sqldriverformatter.h",
         "insertmanager.cpp",
         "insertmanager.h",
+        "literals.h",
         "logicaloperator.cpp",
         "logicaloperator.h",
         "nodes/abstractnode.h",
