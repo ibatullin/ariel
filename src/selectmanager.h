@@ -3,6 +3,7 @@
 
 #include "treemanager.h"
 #include "nodes/selectstatement.h"
+#include "nodes/functions.h"
 
 namespace Ariel {
 
@@ -37,6 +38,7 @@ public:
     SelectManager &select(const QStringList &projections);
     SelectManager &select(std::initializer_list<const char *> projections);
     SelectManager &select(const SqlLiteral::Pointer &sqlLiteral);
+    SelectManager &select(const AbstractFunction::Pointer &function);
     SelectManager &order(const AbstractOrder::Pointer &order);
     SelectManager &where(const Attribute &attribute);
     SelectManager &where(const ComparisonOperator &op);

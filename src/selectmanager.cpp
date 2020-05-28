@@ -129,6 +129,12 @@ SelectManager &SelectManager::select(const SqlLiteral::Pointer &sqlLiteral)
     return *this;
 }
 
+SelectManager &SelectManager::select(const AbstractFunction::Pointer &function)
+{
+    context()->addProjection(function);
+    return *this;
+}
+
 SelectManager &SelectManager::order(const AbstractOrder::Pointer &order)
 {
     ast()->addOrder(order);

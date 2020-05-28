@@ -70,6 +70,11 @@ SelectManager Table::select(const SqlLiteral::Pointer &sqlLiteral) const
     return from().select(sqlLiteral);
 }
 
+SelectManager Table::select(const AbstractFunction::Pointer &function) const
+{
+    return from().select(function);
+}
+
 SelectManager Table::order(const AbstractOrder::Pointer &order) const
 {
     return from().order(order);

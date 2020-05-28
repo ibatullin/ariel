@@ -6,6 +6,7 @@
 #include "comparisonoperators.h"
 #include "logicaloperators.h"
 #include "attributenode.h"
+#include "functions.h"
 
 namespace Ariel {
 
@@ -29,6 +30,7 @@ public:
     void setProjection(const SqlLiteral::Pointer &literal);
     void addProjection(const AttributeNode::Pointer &projection);
     void addProjection(const SqlLiteral::Pointer &literal);
+    void addProjection(const AbstractFunction::Pointer &function);
     void addProjections(const QList<NodePointer> &projections);
     QList<NodePointer> projections() const;
     void setWhere(const NodePointer &where);

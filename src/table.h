@@ -7,6 +7,7 @@
 #include "deletemanager.h"
 #include "attribute.h"
 #include "nodes/comparisonoperators.h"
+#include "nodes/functions.h"
 
 #include <QString>
 #include <QVector>
@@ -34,6 +35,7 @@ public:
     SelectManager select(const QStringList &projections) const;
     SelectManager select(std::initializer_list<const char *> projections) const;
     SelectManager select(const SqlLiteral::Pointer &sqlLiteral) const;
+    SelectManager select(const AbstractFunction::Pointer &function) const;
     SelectManager order(const AbstractOrder::Pointer &order) const;
     SelectManager where(const Attribute &attribute) const;
     SelectManager where(const ComparisonOperator &op) const;

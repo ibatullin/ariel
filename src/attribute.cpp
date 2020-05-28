@@ -78,6 +78,16 @@ SpecialComparisonOperator Attribute::isNotNull() const
     return SpecialComparisonOperator::isNotNull(toNode());
 }
 
+Max::Pointer Attribute::max() const
+{
+    return Max::create(toNode());
+}
+
+Min::Pointer Attribute::min() const
+{
+    return Min::create(toNode());
+}
+
 AttributeNode::Pointer Attribute::toNode() const
 {
     return AttributeNode::create(d);

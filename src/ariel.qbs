@@ -51,6 +51,8 @@ StaticLibrary {
         "nodes/compoundoperators.h",
         "nodes/deletestatement.cpp",
         "nodes/deletestatement.h",
+        "nodes/functions.cpp",
+        "nodes/functions.h",
         "nodes/insertstatement.cpp",
         "nodes/insertstatement.h",
         "nodes/literalvalue.cpp",

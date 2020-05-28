@@ -37,6 +37,8 @@ private slots:
     void detach();
     void compoundSelectStatement();
     void compoundSelectStatement_data();
+    void functions();
+    void functions_data();
 
     void insert();
     void insert_data();
@@ -659,6 +661,31 @@ void ArielTest::compoundSelectStatement_data()
                               " ORDER BY posts.column1 ASC, users.column4 DESC"
                               " LIMIT 1 OFFSET 1");
     }
+}
+
+void ArielTest::functions()
+{
+    QFETCH(QString, sql);
+    QFETCH(QString, result);
+    QCOMPARE(sql, result);
+}
+
+void ArielTest::functions_data()
+{
+    QTest::addColumn<QString>("sql");
+    QTest::addColumn<QString>("result");
+
+    QTest::newRow("max")
+        << posts.select(column1.max()).toSql()
+        << QStringLiteral("SELECT MAX(*) FROM posts");
+
+    QTest::newRow("min")
+        << posts.select(column1.min()).toSql()
+        << QStringLiteral("SELECT MIN(*) FROM posts");
+
+//    QTest::newRow("min")
+//        << posts.select(Ariel::min(column1.max()).toSql()
+//        << QStringLiteral("SELECT MIN(posts.column1) FROM posts");
 }
 
 void ArielTest::insert()

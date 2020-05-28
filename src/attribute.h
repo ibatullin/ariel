@@ -3,6 +3,7 @@
 
 #include "nodes/attributenode.h"
 #include "nodes/order.h"
+#include "nodes/functions.h"
 #include "comparisonoperator.h"
 #include "logicaloperator.h"
 
@@ -27,6 +28,8 @@ public:
     SpecialComparisonOperator notIn(const QVariant &value) const;
     SpecialComparisonOperator isNull() const;
     SpecialComparisonOperator isNotNull() const;
+    Max::Pointer max() const;
+    Min::Pointer min() const;
     AttributeNode::Pointer toNode() const;
     UnqualifiedColumn::Pointer toUnqualifiedColumn() const;
 

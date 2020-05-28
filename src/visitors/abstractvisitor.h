@@ -35,6 +35,8 @@ class LessThanOrEqual;
 class Limit;
 class LiteralValue;
 class Match;
+class Max;
+class Min;
 class Not;
 class NotBetween;
 class NotEqual;
@@ -121,6 +123,8 @@ public:
     virtual void visit(const Limit &node,              AbstractCollector &collector) = 0;
     virtual void visit(const LiteralValue &node,       AbstractCollector &collector) = 0;
     virtual void visit(const Match &node,              AbstractCollector &collector) = 0;
+    virtual void visit(const Max &node,                AbstractCollector &collector) = 0;
+    virtual void visit(const Min &node,                AbstractCollector &collector) = 0;
     virtual void visit(const Not &node,                AbstractCollector &collector) = 0;
     virtual void visit(const NotBetween &node,         AbstractCollector &collector) = 0;
     virtual void visit(const NotEqual &node,           AbstractCollector &collector) = 0;

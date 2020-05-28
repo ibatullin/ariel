@@ -44,6 +44,8 @@ private:
     void visit(const Limit &node,              AbstractCollector &collector) override;
     void visit(const LiteralValue &node,       AbstractCollector &collector) override;
     void visit(const Match &node,              AbstractCollector &collector) override;
+    void visit(const Max &node,                AbstractCollector &collector) override;
+    void visit(const Min &node,                AbstractCollector &collector) override;
     void visit(const Not &node,                AbstractCollector &collector) override;
     void visit(const NotBetween &node,         AbstractCollector &collector) override;
     void visit(const NotEqual &node,           AbstractCollector &collector) override;

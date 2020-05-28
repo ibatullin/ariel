@@ -185,6 +185,18 @@ void SqlVisitor::visit(const Match &node, AbstractCollector &collector)
     visitBinaryNode(node, collector, QStringLiteral(" LIKE "));
 }
 
+void SqlVisitor::visit(const Max &node, AbstractCollector &collector)
+{
+    collector << QStringLiteral("MAX(");
+    visitUnaryNode(node, collector);
+    collector << QStringLiteral(")");
+}
+
+void SqlVisitor::visit(const Min &node, AbstractCollector &collector)
+{
+
+}
+
 void SqlVisitor::visit(const Not &node, AbstractCollector &collector)
 {
     visitUnaryNode(node, collector, QStringLiteral("NOT "));

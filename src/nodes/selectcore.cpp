@@ -61,6 +61,11 @@ void SelectCore::addProjection(const SqlLiteral::Pointer &literal)
     m_projections.append(literal);
 }
 
+void SelectCore::addProjection(const AbstractFunction::Pointer &function)
+{
+    m_projections.append(function);
+}
+
 void SelectCore::addProjections(const QList<NodePointer> &projections)
 {
     m_projections.append(projections);
